@@ -64,7 +64,7 @@ export class ViewHelper {
     }
     static calculateDecorations(items) {
         let decors = [];
-        let seq = 1;
+        let seq = 0;
         items.forEach(item => {
             let color = 'red';
             if (item.status == 'end') {
@@ -73,9 +73,9 @@ export class ViewHelper {
                 else
                     color = 'black';
             }
+            if (item.type != 'bpmn:SequenceFlow') seq++;
             let decor = { id: item.elementId, color, seq };
             decors.push(decor);
-            seq++;
         });
         return decors;
     }
